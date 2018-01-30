@@ -23,6 +23,7 @@ module.exports = `
     title: String!
     capacity: Int!
     floor: Int!
+    events: [Event]
   }
 
   input RoomInput {
@@ -50,7 +51,7 @@ module.exports = `
     user(id: ID!): User
     users: [User]
     event(id: ID!): Event
-    events: [Event]
+    events(dateStart: String): [Event]
     room(id: ID!): Room
     rooms: [Room]
   }
