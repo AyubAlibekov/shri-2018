@@ -76,18 +76,18 @@ class Meeting extends Component {
     if (this.props.usersQuery.loading) return <div />
     const { members, users, roomList } = this.state;
     return (
-      <div>
+      <div className="wrap-meeting">
         <div className="meeting">
           <div className="meeting__title">
             Новая встреча
-          <Link to="/" className="meeting__close">
+            <Link to="/" className="meeting__close">
               <img src={close} alt="close" />
             </Link>
           </div>
 
           <div className="meeting__topic">
             Тема
-          <input
+            <input
               placeholder="О чём будете говорить?"
               value={this.state.topicValue}
               onChange={this.handleChangeTopic('topicValue')}

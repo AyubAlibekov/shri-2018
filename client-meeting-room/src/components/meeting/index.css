@@ -56,7 +56,7 @@
 @media (min-width: 640px) {
 
   .meeting {
-    padding-top: 32px;
+    padding: 32px 0 76px 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(250px, 420px));
     grid-template-rows: auto;
