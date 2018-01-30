@@ -1,0 +1,27 @@
+.time-line {
+  display: inline-block;
+  height: calc(100% + 33px);
+  width: 1px;
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  background-color: #007DFF;
+}
+.hidden {
+  display: none;
+}
+.time-scoreboard {
+  position: absolute;
+  left: -24.5px;
+  background-color: #007DFF;
+  border-radius: 25px;
+  width: 49px;
+  height: 20px;
+  font-family: "HelveticaBold";
+  font-size: 11px;
+  color: #FFFFFF;
+  letter-spacing: 0.4px;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 3px;
+}

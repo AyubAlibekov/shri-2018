@@ -1,0 +1,22 @@
+.grid {
+  display: flex;
+  align-items: center;
+  height: inherit;
+}
+.emptyEvent{
+  height: 28px;
+  background-color: rgba(152, 169, 185, 0.3);
+}
+.substrate-chunk {
+  width: 1px;
+  height: inherit;
+  float: right;
+  position: relative;
+  background-color: rgba(19,100,205,0.10);
+}
+.chunk-first {
+  height: inherit;
+  box-shadow: 1px 0px 0px 0px #E9ECEF;
+  border: none;
+}
+

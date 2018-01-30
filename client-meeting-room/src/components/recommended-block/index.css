@@ -1,0 +1,21 @@
+.recommended-room {
+  margin: 0; padding: 0;
+  margin-top: 4px;
+}
+.recommended-room li {
+  height: 38px;
+  margin-bottom: 8px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  background: #E9ECEF;
+  border-radius: 4px;
+}
+.recommended-room li:first {
+  padding-top: 4px;
+}
+.recommended-room__title {
+  padding-left: 16px;
+  font-family: "HelveticaNeue"
+}
