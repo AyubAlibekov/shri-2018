@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+@font-face {
+  font-family: "HelveticaBold";
+  src: url("./fonts/helvetica-neue-bold.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "HelveticaMedium";
+  src: url("./fonts/HelveticaNeue-Medium.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "HelveticaNeue";
+  src: url("./fonts/HelveticaNeue.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+

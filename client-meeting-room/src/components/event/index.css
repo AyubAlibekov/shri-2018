@@ -1,0 +1,12 @@
+.event {
+  height: 28px;
+  position: relative;
+  background-color: rgba(152, 169, 185, 0.3);
+}
+.event:hover {
+  background-color: rgb(152, 169, 185);
+  z-index: 20;
+}
+.event:active {
+  background-color: rgba(0,0,0,0.12);
+}

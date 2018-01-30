@@ -1,0 +1,28 @@
+.select-date {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  background-color: #E9ECEF;
+  padding: 5px;
+}
+
+.date {
+  padding: 0 12.5px 0 13.5px;
+  font-family: "HelveticaMedium";
+  font-size: 15px;
+}
+.three-month {
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+.react-datepicker-popper {
+  z-index: 999 !important;
+}

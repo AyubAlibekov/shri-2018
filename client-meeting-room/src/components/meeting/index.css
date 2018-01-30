@@ -1,0 +1,78 @@
+.meeting__title {
+  grid-area: title;
+  padding-bottom: 20px;
+  font-size: 20px;
+  line-height: 24px;
+}
+.meeting__close {
+  float: right;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #E9ECEF;
+  border-radius: 100px;
+}
+.meeting__topic{
+  grid-area: topic;
+  padding-bottom: 24px;
+}
+.meeting__topic{
+  grid-area: topic;
+}
+.meeting__topic input{
+  width: 100%;
+  height: 38px;
+  margin-top: 4px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 2px solid #E9ECEF;
+  border-radius: 4px;
+}
+.meeting__topic input:focus{
+  border-color: #007DFF;
+  outline: none; 
+}
+.members{
+  grid-area: members;
+}
+.recommended-block{
+  grid-area: recommended-block;
+}
+.meeting {
+  padding: 25px 16px 0 16px;
+  font-family: "HelveticaBold";
+  font-size: 13px;
+  display: grid;
+  grid-template-areas: 
+    "title"
+    "topic"
+    "date-time"
+    "members"
+    "recommended-block";  
+}
+
+@media (min-width: 640px) {
+
+  .meeting {
+    padding-top: 32px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 420px));
+    grid-template-rows: auto;
+
+    justify-content: center;
+    grid-column-gap: 32px;
+
+    grid-template-areas: 
+      "title title"
+      "topic date-time"
+      "members recommended-block";  
+  }
+}
+
+
+
+.d-block {
+  display: block;
+}

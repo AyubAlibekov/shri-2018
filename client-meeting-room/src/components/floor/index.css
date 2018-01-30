@@ -1,0 +1,11 @@
+.floor {
+  padding-top: 16px;
+  position: relative;
+}
+.floor__number {
+  font-family: "HelveticaBold";
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  color: #858E98;
+  text-transform: uppercase;
+}

@@ -1,0 +1,22 @@
+.left-half, .right-half {
+  display: inline-block;
+  width: 50%;
+}
+.right-half {
+  text-align: right;
+}
+.hour, .last-hour {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-family: "HelveticaBold";
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  color: #252525;
+}
+.hour {
+  margin-left: -10px;
+}
+.last-hour {
+  margin-right: -10px;
+}
