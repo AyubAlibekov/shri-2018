@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-export default ({ hStart, hEnd, mStart, mEnd, roomTitle, moment }) => {
+export default (props = {}) => {
 
   const state = {
-    moment,
-    hStart,
-    roomTitle,
-    hEnd: hEnd || hStart + 1,
-    mStart: mStart || '00',
-    mEnd: mEnd || '00',
+    ...props,
+    hEnd: props.hEnd || props.hStart + 1,
+    mStart: props.mStart || '00',
+    mEnd: props.mEnd || '00',
   }
 
   return (

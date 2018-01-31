@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
+import moment from 'moment';
+
 import { compose } from 'react-apollo';
 import gqlLodash from '../../queries/gqlLodash';
 import usersQuery from '../../queries/users';
+import createEventMutation from '../../mutations/createEvent';
 
 import close from '../../images/close.svg';
 import Members from '../members';
@@ -20,22 +23,24 @@ class Meeting extends Component {
     this.state = {
       topicValue: '',
       roomList: [{
-        title: 'test',
-        floor: 2
-      },
-      {
-        title: 'test1',
-        floor: 2
+        title: props.roomTitle,
+        floor: props.floor,
+        roomId: props.roomId,
       }],
       selectedRoom: {},
+      roomId: props.roomId,
 
       users: [],
       members: [],
+      eventStart: moment(new Date(props.moment).setHours(props.hStart, props.mStart)),
+      eventEnd: moment(new Date(props.moment).setHours(props.hEnd, props.mEnd)),
+      eventDay: moment(props.moment)
     }
 
     this.handleChangeTopic = this.handleChangeTopic.bind(this);
     this.handleSelectMember = this.handleSelectMember.bind(this);
     this.handleDeselectMember = this.handleDeselectMember.bind(this);
+    this.handleChangeDayTime = this.handleChangeDayTime.bind(this);
     this.onSave = this.onSave.bind(this);
   }
 
@@ -68,33 +73,64 @@ class Meeting extends Component {
     });
   }
 
+  handleChangeDayTime(field) {
+    return (moment) => {
+      this.setState({ [field]: moment });
+    }
+  }
+
   onSave() {
-    debugger;
+
+    const members = this.state.members.map(user => user.id);
+
+    this.props.mutate({
+      variables: {
+        input: {
+          title: this.state.topicValue,
+          dateStart: this.state.eventStart._d,
+          dateEnd: this.state.eventEnd._d,
+        },
+        usersIds: members,
+        roomId: this.state.roomId
+      }
+    });
   }
 
   render() {
     if (this.props.usersQuery.loading) return <div />
-    const { members, users, roomList } = this.state;
+    const {
+      members,
+      users,
+      roomList,
+      eventStart,
+      eventEnd,
+      eventDay
+    } = this.state;
     return (
-      <div>
+      <div className="wrap-meeting">
         <div className="meeting">
           <div className="meeting__title">
             Новая встреча
-          <Link to="/" className="meeting__close">
+            <Link to="/" className="meeting__close">
               <img src={close} alt="close" />
             </Link>
           </div>
 
           <div className="meeting__topic">
             Тема
-          <input
+            <input
               placeholder="О чём будете говорить?"
               value={this.state.topicValue}
               onChange={this.handleChangeTopic('topicValue')}
             />
           </div>
 
-          <DateTime {...this.props} />
+          <DateTime
+            eventStart={eventStart}
+            eventEnd={eventEnd}
+            eventDay={eventDay}
+            handleChangeDayTime={this.handleChangeDayTime}
+          />
           <Members
             members={members}
             users={users}
@@ -111,4 +147,5 @@ class Meeting extends Component {
 
 export default compose(
   gqlLodash(usersQuery, { name: 'usersQuery' }),
+  gqlLodash(createEventMutation),
 )(Meeting);

@@ -9,10 +9,10 @@ import Event from '../event';
 
 import './index.css';
 
-function getChild(show, i, start, end, roomTitle, moment) {
+function getChild(show, i, start, end, roomTitle, moment, floor, roomId) {
   switch (show) {
     case 'menu': return <Hour currHour={i} hEnd={end} hStart={start} />
-    case 'room': return <FreeTime hStart={i} roomTitle={roomTitle} moment={moment._d} />
+    case 'room': return <FreeTime hStart={i} roomTitle={roomTitle} moment={moment._d} floor={floor} roomId={roomId} />
     case 'substrate': return <div className="substrate-chunk" />
     default: return ''
   }
@@ -24,7 +24,7 @@ const content = (settings, room = {}, show, moment) => {
   const end = settings.endTime;
   const events = room.events || {};
   const members = '';
-  const roomTitle = room.title;
+  const { title: roomTitle, floor, id: roomId } = room;
 
   let mEndPreviousEvent = 0;
   let hEndPreviousEvent = start;
@@ -33,7 +33,7 @@ const content = (settings, room = {}, show, moment) => {
     if (!events[i]) {
       arr.push(
         <Cell key={`${i}:${mEndPreviousEvent}`} valueFlexGrow={`${(60 - mEndPreviousEvent) / 60}`}>
-          {getChild(show, i, start, end, roomTitle, moment)}
+          {getChild(show, i, start, end, roomTitle, moment, floor, roomId)}
         </Cell>
       );
       mEndPreviousEvent = 0;
@@ -56,6 +56,8 @@ const content = (settings, room = {}, show, moment) => {
                 hEnd={i}
                 roomTitle={roomTitle}
                 moment={moment}
+                floor={floor}
+                roomId={roomId}
               />
             </Cell>
           );
@@ -83,6 +85,8 @@ const content = (settings, room = {}, show, moment) => {
               hEnd={i + 1}
               roomTitle={roomTitle}
               moment={moment}
+              floor={floor}
+              roomId={roomId}
             />
           </Cell>
         );
