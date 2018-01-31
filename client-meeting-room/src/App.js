@@ -25,7 +25,6 @@ const Main = (props) => (
 );
 
 const MeetingComponent = (props) => {
-  console.log(props.location.state)
   return (
     <Layout noCreateBtn >
       <Meeting {...props.location.state} />
